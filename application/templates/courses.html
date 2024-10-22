@@ -1,6 +1,6 @@
 {% extends "layout.html" %} {% block content %}
 <h1>Course Offerings</h1>
-<h3>Term: Spring 2019</h3>
+<h3>Term: Spring {{ term }}</h3>
 <div>
     <table class="table table-hover">
         <thead>
@@ -22,7 +22,11 @@
                 <td>{{ courseData['credits'] }}</td>
                 <td>{{ courseData['term'] }}</td>
                 <td>
-                    <button>Enroll</button>
+                    <a
+                        href="{{ url_for('enrollment')}}?courseID={{ courseData['courseID'] }}"
+                    >
+                        <button style="cursor: pointer">Enroll</button>
+                    </a>
                 </td>
             </tr>
             {% endfor %}
