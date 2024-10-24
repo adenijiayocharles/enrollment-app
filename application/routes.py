@@ -1,6 +1,7 @@
-from application import app
+from application import app, db
 from flask import render_template, request
 from courses import courseData
+from application.classes.user import User
 
 @app.route('/')
 @app.route('/index')
@@ -28,3 +29,9 @@ def enrollment():
             new_course = c
             break
     return render_template('enrollment.html', course=new_course)
+
+@app.route('/users')
+def users():
+    user = User()
+    user.save()
+    return 'Hello'
